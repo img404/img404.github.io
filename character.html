@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orbital Blues Character Sheet</title>
+  <title>Wanderer Character Sheet</title>
   <style>
     * {
       margin: 0;
@@ -24,107 +24,6 @@
       margin: 0 auto;
     }
 
-    .dice-roller-container {
-      background: white;
-      border: 2px solid #333;
-      padding: 2rem;
-      margin-bottom: 3rem;
-      text-align: center;
-      border-radius: 8px;
-    }
-
-    .dice-roller-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: 1px;
-    }
-
-    .dice-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .dice-count {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .dice-count label {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .dice-count input {
-      width: 60px;
-      padding: 0.6rem;
-      font-size: 18px;
-      text-align: center;
-      border: 1px solid #999;
-      font-weight: 700;
-    }
-
-    .dice-button {
-      padding: 0.8rem 1.5rem;
-      background: #333;
-      color: #f5f1e8;
-      border: none;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-
-    .dice-button:hover {
-      background: #555;
-    }
-
-    .dice-results {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      min-height: 80px;
-      align-items: center;
-    }
-
-    .die {
-      width: 70px;
-      height: 70px;
-      background: #fff;
-      border: 2px solid #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      font-weight: 700;
-      border-radius: 6px;
-    }
-
-    .die.rolling {
-      animation: roll 0.3s ease-in-out;
-    }
-
-    @keyframes roll {
-      0%, 100% { transform: rotateZ(0deg); }
-      50% { transform: rotateZ(180deg); }
-    }
-
-    .roll-total {
-      font-size: 24px;
-      font-weight: 700;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #f0e8d8;
-      border-radius: 6px;
-      min-width: 200px;
-    }
-
     .header {
       text-align: center;
       margin-bottom: 3rem;
@@ -137,28 +36,18 @@
       margin: 0;
     }
 
-    .form-section {
-      margin-bottom: 3rem;
+    .header p {
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin: 0.5rem 0 0 0;
+      color: #666;
     }
 
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      border-bottom: 2px solid #000;
-      padding-bottom: 1rem;
-      margin-bottom: 1.8rem;
-      letter-spacing: 1px;
-    }
-
-    .form-row {
+    .top-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .form-row.full {
-      grid-template-columns: 1fr;
+      margin-bottom: 3rem;
     }
 
     .form-group {
@@ -187,10 +76,24 @@
       border-color: #333;
     }
 
+    .form-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      border-bottom: 2px solid #000;
+      padding-bottom: 1rem;
+      margin-bottom: 1.8rem;
+      letter-spacing: 1px;
+    }
+
     .attributes {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 1.5rem;
+      margin-bottom: 3rem;
     }
 
     .attr-box {
@@ -216,88 +119,70 @@
       width: 100%;
     }
 
-    .finances {
+    .trouble-gambit {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
+      margin-bottom: 3rem;
     }
 
-    .finance-box {
+    .trouble-box, .gambit-box {
       border: 1px solid #999;
       padding: 1.8rem;
     }
 
-    .finance-label {
+    .trouble-gambit-label {
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 0.5px;
       margin-bottom: 0.8rem;
     }
 
-    .finance-input {
-      font-size: 24px;
+    .trouble-gambit-input {
       padding: 0.8rem;
-      border: none;
-      background: transparent;
-      font-weight: 700;
-      width: 100%;
-    }
-
-    .troubles-gambits {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .trouble-row, .gambit-row {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .row-label {
-      font-size: 15px;
-      font-weight: 700;
-      padding: 0.7rem;
-      border-bottom: 1px dashed #999;
-    }
-
-    .row-input {
-      padding: 0.7rem;
-      border: none;
-      border-bottom: 1px dashed #999;
-      background: transparent;
+      border: 1px solid #999;
       font-size: 18px;
-    }
-
-    .equipment-table {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: rgba(255, 255, 255, 0.7);
       width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1rem;
     }
 
-    .equipment-table th {
-      text-align: left;
-      padding: 1.2rem;
-      border-bottom: 1px solid #000;
-      font-weight: 700;
+    .trouble-gambit-input:focus {
+      outline: none;
+      background: #fff;
+      border-color: #333;
+    }
+
+    .journal-section {
+      background: white;
+      border: 1px solid #999;
+      padding: 2rem;
+      border-radius: 6px;
+    }
+
+    .journal-label {
       font-size: 16px;
+      font-weight: 700;
       letter-spacing: 0.5px;
+      margin-bottom: 1.2rem;
     }
 
-    .equipment-table td {
-      padding: 1rem 1.2rem;
-      border-bottom: 1px dashed #999;
-    }
-
-    .equipment-table input {
+    .journal-textarea {
       width: 100%;
-      padding: 0.6rem;
-      border: none;
-      background: transparent;
-      font-size: 17px;
+      min-height: 800px;
+      padding: 1.5rem;
+      font-size: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      border: 1px solid #999;
+      border-radius: 4px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .journal-textarea:focus {
+      outline: none;
+      border-color: #333;
+      background: #fff;
     }
 
     .print-button {
@@ -324,55 +209,19 @@
 </head>
 <body>
   <div class="container">
-    <div class="dice-roller-container">
-      <div class="dice-roller-title">D6 ROLLER</div>
-      <div class="dice-controls">
-        <div class="dice-count">
-          <label for="diceCount">Dice:</label>
-          <input type="number" id="diceCount" value="4" min="1" max="10">
-        </div>
-        <button class="dice-button" onclick="rollDice()">ROLL</button>
-        <button class="dice-button" onclick="addDie()">+1 DIE</button>
-        <button class="dice-button" onclick="resetDice()">RESET</button>
-      </div>
-      <div class="dice-results" id="diceResults"></div>
-      <div class="roll-total" id="rollTotal" style="display: none;"></div>
-    </div>
-
     <div class="header">
-      <h1>ORBITAL BLUES</h1>
+      <h1>WANDERER</h1>
+      <p>Solo Adventure & Discovery</p>
     </div>
 
-    <div class="form-section">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Player name</label>
-          <input type="text" placeholder="">
-        </div>
-        <div class="form-group">
-          <label>Crew</label>
-          <input type="text" placeholder="">
-        </div>
+    <div class="top-section">
+      <div class="form-group">
+        <label>Player Name</label>
+        <input type="text" placeholder="">
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Character name</label>
-          <input type="text" placeholder="">
-        </div>
-        <div class="form-group">
-          <label>PCMKR. NO.</label>
-          <input type="text" placeholder="">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>SECTOR</label>
-          <input type="text" placeholder="">
-        </div>
-        <div class="form-group">
-          <label>ALIAS</label>
-          <input type="text" placeholder="">
-        </div>
+      <div class="form-group">
+        <label>Character Name</label>
+        <input type="text" placeholder="">
       </div>
     </div>
 
@@ -402,88 +251,22 @@
       </div>
     </div>
 
-    <div class="form-section">
-      <div class="section-title">Resources</div>
-      <div class="finances">
-        <div class="finance-box">
-          <div class="finance-label">Credits</div>
-          <input type="text" class="finance-input" placeholder="">
-        </div>
-        <div class="finance-box">
-          <div class="finance-label">Debts</div>
-          <input type="text" class="finance-input" placeholder="">
-        </div>
+    <div class="trouble-gambit">
+      <div class="trouble-box">
+        <div class="trouble-gambit-label">Trouble</div>
+        <textarea class="trouble-gambit-input" style="min-height: 120px; resize: vertical;"></textarea>
+      </div>
+      <div class="gambit-box">
+        <div class="trouble-gambit-label">Gambit</div>
+        <textarea class="trouble-gambit-input" style="min-height: 120px; resize: vertical;"></textarea>
       </div>
     </div>
 
     <div class="form-section">
-      <div class="section-title">Troubles & Gambits</div>
-      <div class="troubles-gambits">
-        <div class="trouble-col">
-          <div style="font-weight: 500; font-size: 13px; margin-bottom: 1rem; letter-spacing: 1px;">Troubles</div>
-          <div class="trouble-row">
-            <div class="row-label">Trouble 1</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-          <div class="trouble-row">
-            <div class="row-label">Trouble 2</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-          <div class="trouble-row">
-            <div class="row-label">Trouble 3</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-          <div class="trouble-row">
-            <div class="row-label">Trouble 4</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-        </div>
-        <div class="gambit-col">
-          <div style="font-weight: 500; font-size: 13px; margin-bottom: 1rem; letter-spacing: 1px;">Gambits</div>
-          <div class="gambit-row">
-            <div class="row-label">Gambit 1</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-          <div class="gambit-row">
-            <div class="row-label">Gambit 2</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-          <div class="gambit-row">
-            <div class="row-label">Gambit 3</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-          <div class="gambit-row">
-            <div class="row-label">Gambit 4</div>
-            <input type="text" class="row-input" placeholder="">
-          </div>
-        </div>
+      <div class="section-title">Journal & Adventure Log</div>
+      <div class="journal-section">
+        <textarea class="journal-textarea" id="journalText" placeholder="Record your solo adventures, encounters, discoveries, and inner thoughts here. Your journal is the heart of your wandering story..."></textarea>
       </div>
-    </div>
-
-    <div class="form-section">
-      <div class="section-title">Equipment & Mementos</div>
-      <table class="equipment-table">
-        <thead>
-          <tr>
-            <th style="width: 120px;">Type</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
-        </tbody>
-      </table>
     </div>
 
     <div class="action-buttons">
@@ -492,49 +275,23 @@
   </div>
 
   <script>
-    function rollDice() {
-      const count = parseInt(document.getElementById('diceCount').value);
-      const resultsDiv = document.getElementById('diceResults');
-      resultsDiv.innerHTML = '';
-
-      let total = 0;
-      const rolls = [];
-
-      for (let i = 0; i < count; i++) {
-        const roll = Math.floor(Math.random() * 6) + 1;
-        rolls.push(roll);
-        total += roll;
+    // Load journal from localStorage
+    window.addEventListener('DOMContentLoaded', function() {
+      const savedJournal = localStorage.getItem('wandererJournal');
+      if (savedJournal) {
+        document.getElementById('journalText').value = savedJournal;
       }
+    });
 
-      rolls.forEach((roll, index) => {
-        setTimeout(() => {
-          const die = document.createElement('div');
-          die.className = 'die rolling';
-          die.textContent = roll;
-          resultsDiv.appendChild(die);
-        }, index * 50);
-      });
-
-      setTimeout(() => {
-        const totalDiv = document.getElementById('rollTotal');
-        totalDiv.textContent = `Total: ${total}`;
-        totalDiv.style.display = 'block';
-      }, count * 50 + 300);
-    }
-
-    function addDie() {
-      const input = document.getElementById('diceCount');
-      const current = parseInt(input.value);
-      if (current < 10) {
-        input.value = current + 1;
+    // Auto-save journal
+    document.addEventListener('DOMContentLoaded', function() {
+      const journalText = document.getElementById('journalText');
+      if (journalText) {
+        journalText.addEventListener('input', function() {
+          localStorage.setItem('wandererJournal', this.value);
+        });
       }
-    }
-
-    function resetDice() {
-      document.getElementById('diceCount').value = '4';
-      document.getElementById('diceResults').innerHTML = '';
-      document.getElementById('rollTotal').style.display = 'none';
-    }
+    });
   </script>
 </body>
 </html>
