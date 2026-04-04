@@ -1,0 +1,257 @@
+<form style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #f5f1e8; padding: 3rem; max-width: 1300px; margin: 0 auto; color: var(--color-text-primary);">
+  <style>
+    .dice-roller-container { background: white; border: 2px solid #333; padding: 2rem; margin-bottom: 3rem; text-align: center; border-radius: 8px; }
+    .dice-roller-title { font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 1px; }
+    .dice-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .dice-button { padding: 0.8rem 1.5rem; background: #333; color: #f5f1e8; border: none; font-size: 16px; font-weight: 700; cursor: pointer; border-radius: 6px; }
+    .dice-button:hover { background: #555; }
+    .dice-count { display: flex; align-items: center; gap: 1rem; }
+    .dice-count label { font-size: 16px; font-weight: 600; }
+    .dice-count input { width: 60px; padding: 0.6rem; font-size: 18px; text-align: center; border: 1px solid #999; font-weight: 700; }
+    .dice-results { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; min-height: 80px; align-items: center; }
+    .die { width: 70px; height: 70px; background: #fff; border: 2px solid #333; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; border-radius: 6px; }
+    .die.rolling { animation: roll 0.3s ease-in-out; }
+    @keyframes roll { 0%, 100% { transform: rotateZ(0deg); } 50% { transform: rotateZ(180deg); } }
+    .roll-total { font-size: 24px; font-weight: 700; margin-top: 1rem; padding: 1rem; background: #f0e8d8; border-radius: 6px; min-width: 200px; }
+    .header { text-align: center; margin-bottom: 3rem; }
+    .header h1 { font-size: 54px; font-weight: 700; letter-spacing: 3px; margin: 0; }
+    .form-section { margin-bottom: 3rem; }
+    .section-title { font-size: 24px; font-weight: 700; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 1.8rem; letter-spacing: 1px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-row.two-col { grid-template-columns: 1fr 1fr; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-size: 16px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+    .form-group input { padding: 0.9rem; border: 1px solid #999; font-size: 18px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: rgba(255,255,255,0.7); }
+    .form-group input:focus { outline: none; background: #fff; border-color: #333; }
+    .attributes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+    .attr-box { border: 1px solid #999; padding: 1.5rem; text-align: center; }
+    .attr-label { font-size: 16px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
+    .attr-input { font-size: 28px; text-align: center; padding: 0.8rem; border: none; background: transparent; font-weight: 700; width: 100%; }
+    .finances { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .finance-box { border: 1px solid #999; padding: 1.8rem; }
+    .finance-label { font-size: 16px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
+    .finance-input { font-size: 24px; padding: 0.8rem; border: none; background: transparent; font-weight: 700; width: 100%; }
+    .troubles-gambits { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .trouble-col, .gambit-col { }
+    .trouble-row, .gambit-row { display: grid; grid-template-columns: 150px 1fr; gap: 1.2rem; margin-bottom: 1.5rem; }
+    .row-label { font-size: 15px; font-weight: 700; padding: 0.7rem; border-bottom: 1px dashed #999; }
+    .row-input { padding: 0.7rem; border: none; border-bottom: 1px dashed #999; background: transparent; font-size: 18px; }
+    .equipment-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    .equipment-table th { text-align: left; padding: 1.2rem; border-bottom: 1px solid #000; font-weight: 700; font-size: 16px; letter-spacing: 0.5px; }
+    .equipment-table td { padding: 1rem 1.2rem; border-bottom: 1px dashed #999; }
+    .equipment-table input { width: 100%; padding: 0.6rem; border: none; background: transparent; font-size: 17px; }
+  </style>
+
+  <div class="dice-roller-container">
+    <div class="dice-roller-title">D6 ROLLER</div>
+    <div class="dice-controls">
+      <div class="dice-count">
+        <label for="diceCount">Dice:</label>
+        <input type="number" id="diceCount" value="4" min="1" max="10">
+      </div>
+      <button class="dice-button" onclick="rollDice()">ROLL</button>
+      <button class="dice-button" onclick="addDie()">+1 DIE</button>
+      <button class="dice-button" onclick="resetDice()">RESET</button>
+    </div>
+    <div class="dice-results" id="diceResults"></div>
+    <div class="roll-total" id="rollTotal" style="display: none;"></div>
+  </div>
+
+  <script>
+    function rollDice() {
+      const count = parseInt(document.getElementById('diceCount').value);
+      const resultsDiv = document.getElementById('diceResults');
+      resultsDiv.innerHTML = '';
+      
+      let total = 0;
+      const rolls = [];
+      
+      for (let i = 0; i < count; i++) {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        rolls.push(roll);
+        total += roll;
+      }
+      
+      rolls.forEach((roll, index) => {
+        setTimeout(() => {
+          const die = document.createElement('div');
+          die.className = 'die rolling';
+          die.textContent = roll;
+          resultsDiv.appendChild(die);
+        }, index * 50);
+      });
+      
+      setTimeout(() => {
+        const totalDiv = document.getElementById('rollTotal');
+        totalDiv.textContent = `Total: ${total}`;
+        totalDiv.style.display = 'block';
+      }, count * 50 + 300);
+    }
+    
+    function addDie() {
+      const input = document.getElementById('diceCount');
+      const current = parseInt(input.value);
+      if (current < 10) {
+        input.value = current + 1;
+      }
+    }
+    
+    function resetDice() {
+      document.getElementById('diceCount').value = '4';
+      document.getElementById('diceResults').innerHTML = '';
+      document.getElementById('rollTotal').style.display = 'none';
+    }
+  </script>
+
+  <div class="header">
+    <h1>ORBITAL BLUES</h1>
+  </div>
+
+  <div class="form-section">
+    <div class="form-row two-col">
+      <div class="form-group">
+        <label>Player name</label>
+        <input type="text" placeholder="">
+      </div>
+      <div class="form-group">
+        <label>Crew</label>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="form-row two-col">
+      <div class="form-group">
+        <label>Character name</label>
+        <input type="text" placeholder="">
+      </div>
+      <div class="form-group">
+        <label>PCMKR. NO.</label>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="form-row two-col">
+      <div class="form-group">
+        <label>SECTOR</label>
+        <input type="text" placeholder="">
+      </div>
+      <div class="form-group">
+        <label>ALIAS</label>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="section-title">Attributes</div>
+    <div class="attributes">
+      <div class="attr-box">
+        <div class="attr-label">Heart</div>
+        <input type="text" class="attr-input" maxlength="2">
+      </div>
+      <div class="attr-box">
+        <div class="attr-label">Blues</div>
+        <input type="text" class="attr-input" maxlength="2">
+      </div>
+      <div class="attr-box">
+        <div class="attr-label">Muscle</div>
+        <input type="text" class="attr-input" maxlength="2">
+      </div>
+      <div class="attr-box">
+        <div class="attr-label">Grit</div>
+        <input type="text" class="attr-input" maxlength="2">
+      </div>
+      <div class="attr-box">
+        <div class="attr-label">Savvy</div>
+        <input type="text" class="attr-input" maxlength="2">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="section-title">Resources</div>
+    <div class="finances">
+      <div class="finance-box">
+        <div class="finance-label">Credits</div>
+        <input type="text" class="finance-input" placeholder="">
+      </div>
+      <div class="finance-box">
+        <div class="finance-label">Debts</div>
+        <input type="text" class="finance-input" placeholder="">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="section-title">Troubles & Gambits</div>
+    <div class="troubles-gambits">
+      <div class="trouble-col">
+        <div style="font-weight: 500; font-size: 13px; margin-bottom: 1rem; letter-spacing: 1px;">Troubles</div>
+        <div class="trouble-row">
+          <div class="row-label">Trouble 1</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+        <div class="trouble-row">
+          <div class="row-label">Trouble 2</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+        <div class="trouble-row">
+          <div class="row-label">Trouble 3</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+        <div class="trouble-row">
+          <div class="row-label">Trouble 4</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+      </div>
+      <div class="gambit-col">
+        <div style="font-weight: 500; font-size: 13px; margin-bottom: 1rem; letter-spacing: 1px;">Gambits</div>
+        <div class="gambit-row">
+          <div class="row-label">Gambit 1</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+        <div class="gambit-row">
+          <div class="row-label">Gambit 2</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+        <div class="gambit-row">
+          <div class="row-label">Gambit 3</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+        <div class="gambit-row">
+          <div class="row-label">Gambit 4</div>
+          <input type="text" class="row-input" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="section-title">Equipment & Mementos</div>
+    <table class="equipment-table">
+      <thead>
+        <tr>
+          <th style="width: 120px;">Type</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+        <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <button type="button" onclick="window.print()" style="padding: 0.8rem 2rem; background: #333; color: #f5f1e8; border: none; font-size: 14px; font-weight: 500; letter-spacing: 1px; cursor: pointer; border-radius: var(--border-radius-md);">Print Sheet</button>
+  </div>
+</form>
