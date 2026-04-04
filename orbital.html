@@ -19,7 +19,6 @@
             min-height: 100vh;
         }
 
-        /* Dark mode adjustments */
         @media (prefers-color-scheme: dark) {
             body {
                 color: #e8eef5;
@@ -402,145 +401,6 @@
             }
         }
 
-        .filter-btn {
-            padding: 0.6rem 1.2rem;
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 8px;
-            background: transparent;
-            color: #4ecdc4;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover {
-            border-color: #4ecdc4;
-            background: rgba(78, 205, 196, 0.1);
-        }
-
-        .filter-btn.active {
-            background: linear-gradient(135deg, #4ecdc4, #3db8ad);
-            color: white;
-            border-color: #4ecdc4;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .filter-btn {
-                color: #4ecdc4;
-                border-color: rgba(78, 205, 196, 0.3);
-            }
-
-            .filter-btn:hover {
-                background: rgba(78, 205, 196, 0.15);
-            }
-        }
-
-        .gt-card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .gt-card:hover {
-            border-color: #4ecdc4;
-            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.15);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .gt-card {
-                background: rgba(30, 35, 50, 0.6);
-                border-color: rgba(78, 205, 196, 0.2);
-            }
-
-            .gt-card:hover {
-                border-color: #4ecdc4;
-                box-shadow: 0 4px 12px rgba(78, 205, 196, 0.25);
-            }
-        }
-
-        .gt-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
-
-        .gt-badge-gambit {
-            background: rgba(78, 205, 196, 0.2);
-            color: #4ecdc4;
-        }
-
-        .gt-badge-trouble {
-            background: rgba(255, 107, 107, 0.2);
-            color: #ff6b6b;
-        }
-
-        .gt-card-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .gt-card-name {
-                color: #e8eef5;
-            }
-        }
-
-        .gt-card-desc {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .gt-card-desc {
-                color: #b0b8c8;
-            }
-        }
-
-        .gt-triggers {
-            font-size: 0.85rem;
-            color: #777;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            padding-top: 0.75rem;
-            margin-top: 0.75rem;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .gt-triggers {
-                color: #9aa8b8;
-                border-top-color: rgba(255, 255, 255, 0.1);
-            }
-        }
-
-        .gt-triggers-label {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .gt-triggers-label {
-                color: #d0d8e8;
-            }
-        }
-
-        .gt-no-results {
-            color: #aaa;
-            font-size: 1rem;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-
         .footer {
             text-align: center;
             padding: 2rem;
@@ -552,6 +412,168 @@
             .footer {
                 color: #a0a8b8;
             }
+        }
+
+        /* Gambits & Troubles Styles */
+        .gambits-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .gambits-tab {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .gambits-tab.active {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+            color: white;
+            border-color: #ff6b6b;
+            font-weight: 500;
+        }
+
+        .gambits-search {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gambits-search {
+                background: rgba(255, 255, 255, 0.1);
+                color: #e8eef5;
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .gambits-tab {
+                border-color: rgba(255, 255, 255, 0.3);
+                color: #a0a8b8;
+            }
+        }
+
+        .gambits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .gambit-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gambit-card {
+                background: rgba(255, 255, 255, 0.05);
+                border-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .gambit-card:hover {
+            transform: translateY(-2px);
+            border-color: #ff6b6b;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+        }
+
+        .gambit-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gambit-tag.gambit {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+        }
+
+        .gambit-tag.trouble {
+            background: rgba(255, 184, 82, 0.2);
+            color: #ffb852;
+        }
+
+        .gambit-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gambit-name {
+                color: #e8eef5;
+            }
+        }
+
+        .gambit-desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gambit-desc {
+                color: #a0a8b8;
+            }
+        }
+
+        .gambit-triggers {
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gambit-triggers {
+                border-top-color: rgba(255, 255, 255, 0.1);
+                color: #a0a8b8;
+            }
+        }
+
+        .gambit-triggers strong {
+            color: #ff6b6b;
+        }
+
+        .gambits-count {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .gambits-count {
+                color: #a0a8b8;
+            }
+        }
+
+        .gambits-empty {
+            color: #999;
+            font-size: 1rem;
+            padding: 2rem;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -579,6 +601,19 @@
                 padding: 0.6rem 1rem;
                 font-size: 0.9rem;
             }
+
+            .gambits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gambits-tabs {
+                gap: 0.3rem;
+            }
+
+            .gambits-tab {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -590,7 +625,7 @@
             <nav>
                 <button class="nav-primary" onclick="showSection('quickstart')">Quickstart Guide</button>
                 <button class="nav-secondary" onclick="showSection('character')">Character Creation</button>
-                <button class="nav-secondary" onclick="showSection('reference')">Gambits & Troubles</button>
+                <button class="nav-secondary" onclick="showSection('gambits')">Gambits & Troubles</button>
             </nav>
         </header>
 
@@ -791,10 +826,6 @@
             </ol>
 
             <p style="font-size: 1.2rem; margin-top: 2rem; font-weight: 500;">Welcome to the frontier, outlaw. Your final days start now.</p>
-
-            <div class="external-links">
-                <button onclick="showSection('reference')" class="nav-secondary" style="padding: 0.75rem 1.5rem; text-decoration: none;">Explore Gambits & Troubles →</button>
-            </div>
         </div>
 
         <!-- CHARACTER CREATION SECTION -->
@@ -887,7 +918,7 @@
             <div class="quote">
                 Gambits are talents, tricks and reliable assets that characters call upon to get jobs done. They reflect a character's past, ties or abilities.
             </div>
-            <p>You begin play with <strong>one Gambit</strong> of your choosing. For a complete list, check the <button onclick="showSection('reference')" style="background: none; border: none; color: #4ecdc4; cursor: pointer; text-decoration: underline;">Gambits & Troubles reference →</button></p>
+            <p>You begin play with <strong>one Gambit</strong> of your choosing. For a complete list, check the <button class="nav-secondary" onclick="showSection('gambits')" style="display: inline; padding: 0.4rem 0.8rem; font-size: 0.95rem;">Gambits & Troubles reference</button></p>
 
             <h3>Step 7: Equipment</h3>
             <p>Choose a few pieces of equipment that make sense for your character:</p>
@@ -979,149 +1010,129 @@
             </ol>
 
             <div class="external-links">
-                <button onclick="showSection('reference')" class="nav-secondary" style="padding: 0.75rem 1.5rem; text-decoration: none;">Explore Gambits & Troubles →</button>
-                <button class="nav-primary" onclick="showSection('quickstart')" style="background: linear-gradient(135deg, #4ecdc4, #3db8ad); border-color: #4ecdc4;">Back to Quickstart</button>
+                <button class="nav-primary" onclick="showSection('gambits')" style="background: linear-gradient(135deg, #4ecdc4, #3db8ad); border-color: #4ecdc4;">Browse Gambits & Troubles →</button>
             </div>
         </div>
 
         <!-- GAMBITS & TROUBLES SECTION -->
-        <div id="reference" class="content">
-            <h2>Gambits & Troubles Reference</h2>
-            <p>Your character's special abilities and persistent challenges.</p>
+        <div id="gambits" class="content">
+            <h2>Gambits & Troubles</h2>
+            <p>Special abilities and personal complications for your character.</p>
 
-            <div style="margin: 1.5rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
-                <input type="text" id="searchBox" placeholder="Search by name or keyword..." style="flex: 1; min-width: 250px; padding: 0.75rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-size: 1rem;">
+            <div class="gambits-tabs">
+                <button class="gambits-tab active" onclick="setGambitsTab('all')">All</button>
+                <button class="gambits-tab" onclick="setGambitsTab('gambit')">Gambits</button>
+                <button class="gambits-tab" onclick="setGambitsTab('trouble')">Troubles</button>
             </div>
 
-            <div style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                <button onclick="filterGT('all')" class="filter-btn active" data-filter="all">All</button>
-                <button onclick="filterGT('gambit')" class="filter-btn" data-filter="gambit">Gambits</button>
-                <button onclick="filterGT('trouble')" class="filter-btn" data-filter="trouble">Troubles</button>
-            </div>
+            <input type="text" class="gambits-search" id="gambits-search" placeholder="Search by name or keyword..." oninput="renderGambits()">
 
-            <div id="countGT" style="font-size: 0.9rem; color: #7f8c8d; margin-bottom: 1rem;"></div>
-
-            <div id="gtGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;"></div>
+            <div class="gambits-count" id="gambits-count"></div>
+            <div class="gambits-grid" id="gambits-grid"></div>
         </div>
 
         <div class="footer">
             <p>Orbital Blues: Wanderer Guide | A solo RPG toolkit based on Orbital Blues</p>
-            <p style="margin-top: 0.5rem;"><button onclick="showSection('reference')" style="background: none; border: none; color: #4ecdc4; cursor: pointer; text-decoration: underline;">View Gambits & Troubles →</button></p>
         </div>
     </div>
 
     <script>
-        // Gambits & Troubles Data
-        const GAMBITS_TROUBLES_DATA = [
-            { type: 'gambit', name: 'A Fighter, Not a Lover', desc: 'No one can match you in a fight, the heat is everything. Spend Exertion during Combat instead of rolling a Stat Check. If successful, you do not spend Heart.' },
-            { type: 'gambit', name: 'Ace Pilot', desc: 'You\'ve never met anyone who could match you behind the wheel. When piloting a Vehicle, you can always use Savvy instead of Mobility for Stat Checks. You can also choose one option instead of two when you roll a success.' },
-            { type: 'gambit', name: 'The Bandit', desc: 'Through natural ability or training, you are more with incredible agility when you use Exertion to reroll a die while performing physical feats of dexterity, thievery, or agility. You may reroll up to two dice per Heart spent, instead of one.' },
-            { type: 'gambit', name: 'Beast', desc: 'You are very intimidating. If not in combat, including but not limited to acting with something to prove, you roll with the Upper Hand against those with Against the Odds against the cowardly.' },
-            { type: 'gambit', name: 'Beauty', desc: 'You are attractive by any measure, if not always in the conventional sense. You roll with the Upper Hand on checks to influence the smitten, or Against the Odds against the envious.' },
-            { type: 'gambit', name: 'Book Learning', desc: 'You are an academic or special interest field. This could be anything from theoretical physics or biology to literature or history. You roll with the Upper Hand on all Stat Checks relating to knowledge in your field or specialisation.' },
-            { type: 'gambit', name: 'The Captain', desc: 'You lead your crew through thick and thin, and they\'ll always trust you. Once per Scene, when you order one of your Crew to do something, they roll with the Upper Hand to do it. If they fail, you may reroll with the Upper Hand on a Stat Check.' },
-            { type: 'gambit', name: 'Desperado', desc: 'You can push yourself to the limit when it matters. You can use Exertion to reroll a die in combat. When you use Exertion, you may reroll up to two dice per Heart spent, instead of one.' },
-            { type: 'gambit', name: 'Devil\'s Right Hand', desc: 'A pistol is as much a weapon as it is an extension of your will. You always roll with the Upper Hand when Attacking with pistols, and never roll Against the Odds.' },
-            { type: 'gambit', name: 'Engineer', desc: 'You\'re always creating and designing new technological advancements. Design a new piece of Crew Equipment with the Storyteller. You own it or have it installed on your ship. At the end of each Session, allocate an additional die to a Crew Project.' },
-            { type: 'gambit', name: 'Fast Hands', desc: 'You\'re the fastest gun in the Frontier Galaxy. When your initiative is Surprised, you can still act and add the higher to your Savvy. You may roll 2d3 instead and add the higher to your Savvy on your first Turn.' },
-            { type: 'gambit', name: 'Friends in Low Places', desc: 'You\'re known more than a few shady times. When you return to an old haunt and seek some old friends, roll a Blues Check. If you succeed, in addition to gaining a Blues Check, roll with the Upper Hand on your next check to obtain or coerce something from someone there.' },
-            { type: 'gambit', name: 'The Gambler', desc: 'You are a master of misdirection. It comes as easily as breathing. When you use Exertion to reroll a die while gambling or bluffing, you may reroll up to two dice per Heart spent, instead of one.' },
-            { type: 'gambit', name: 'Gift of the Gab', desc: 'You can compose yourself to spin a social situation. When you use Exertion, you may reroll up to two dice per Heart spent, instead of one. You can utilise your knowledge and abilities lying and constructing truths.' },
-            { type: 'gambit', name: 'Grease-Monkey', desc: 'You can utilise your knowledge and abilities to perform engineering tasks others find impossible. When you use Exertion to complete engineering tasks others find impossible, you may reroll up to two dice per Heart spent, instead of one.' },
-            { type: 'gambit', name: 'Hail of Blows', desc: 'You can pummel your enemies into submission. When making an Attack Against the Odds, you can spend 1 Heart to make a second Attack Against the Odds with some weapon this turn.' },
-            { type: 'gambit', name: 'Heard It Through the Grapevine', desc: 'The buzz is everything and everyone. Once per Session, roll a Savvy Check to discover the Crew\'s current predicament. You roll with the Upper Hand on all Stat Checks to gather information or obtain something advantageous about the situation.' },
-            { type: 'gambit', name: 'Heart of Gold', desc: 'You are known for your honesty and good nature. When you speak, roll with the Upper Hand to persuade people to believe you, or to lead them to believe you, even with your heart.' },
-            { type: 'gambit', name: 'It\'s All in the Details', desc: 'You notice all manner of things others might not. You roll with the Upper Hand on all Observation Checks. Once per Session, the Storyteller tells you what parts you need to fix it and how long it will take.' },
-            { type: 'gambit', name: 'Just Nuts and Bolts', desc: 'You are a mechanical wizard. When you come across a broken piece of technology, the Storyteller tells you what parts you need to fix it and how long it will take.' },
-            { type: 'gambit', name: 'Light-Fingered', desc: 'Through years on one side of the law or the other, you\'ve learnt your way around. You have the Upper Hand on Observation Checks to notice and identify locks, traps and other security measures, as well as Stat Checks to disable them.' },
-            { type: 'gambit', name: 'Lucky', desc: 'Luck smiles down on you. Once per Arc, you can force yourself or any other character to reroll a single Check with either the Upper Hand or Against the Odds and choose either result.' },
-            { type: 'gambit', name: 'Marksman', desc: 'With enough time, you can make one shot count. You can take a turn to line up a shot, examining a target and its movement, then Attack with the Upper Hand using a Ranged Personal or Military weapon. The Storyteller may allow use of Marksman\'s Aim before combat starts.' },
-            { type: 'gambit', name: 'Martial Art', desc: 'You are skilled in unarmed combat. You always come to a fight unarmed. You do not roll Against the Odds when you Attack, and your unarmed attacks reflect a tighter style. To reflect Defensive, Intimidating, or Tactile style, grant your opponent the Upper Hand on Healing Checks.' },
-            { type: 'gambit', name: 'Sawbones', desc: 'You\'re a skilled medical doctor. You always come prepared, having the Upper Hand on all Stat Checks related to medicine. In addition, at the end of each Session you need to recover Heart. Roll Against its Odds if you need to recover Heart for this.' },
-            { type: 'gambit', name: 'Side Hustle', desc: 'You have another job or enterprise bringing an Interstellar income. At the end of each Session when calculating Credits and Debts, you can add the result to either the player\'s Credits or to your Savings. Tell the others what you do to make ends meet.' },
-            { type: 'gambit', name: 'Technical Expert', desc: 'You have the gift of a specialty. You can always use your Grit or Savvy instead of a speciality. You can spend a point of Heart to negotiate a Vehicle. You can always use Checks to operate a Vehicle, and can sometimes do things that are not in a normal job.' },
-            { type: 'gambit', name: 'The Perfect Lie', desc: 'There you will sometimes believe at the risk of a straight lie. Once per Session, you can perfectly convince someone of a lie. They will always believe it to be true for the rest of the Scene or combat.' },
-            { type: 'gambit', name: 'Thick Pockets', desc: 'You always count as connected to where your recent work of Credits comes from. You can add the result to either the other characters\' Credits or to your Savings when calculating Credits and Debts.' },
-            { type: 'gambit', name: 'Tooled Up', desc: 'You have all the tops. Choose two: gain one of your weapons on your ship, gain an additional piece of Crew Equipment, can use of your weapons on board a qualified final, take on an extra weapon, add a weapon to your ship.' },
-            { type: 'gambit', name: 'True Grit', desc: 'You\'ve got real guts. Once per Session, you may draw on your inner resolve to roll a Stat Check or Attack with the Upper Hand using your Grit instead of a normal Stat. Bullets, braces and twists aren\'t enough to slow you down.' },
-            { type: 'gambit', name: 'Unstoppable', desc: 'Bullets, braces and twists aren\'t enough to slow you down. Stacked with only not damage from an Attack, this negates all incoming damage. Once per Arc you may choose to take only not damage from an Attack\'s Brewing damage.' },
-            { type: 'gambit', name: 'Well-Travelled', desc: 'You\'ve seen almost every spaceport in the Frontier Galaxy. Once per Arc when you arrive on a new planet, city or spaceport, you can announce that you have been here before, tell the group about a contact or location you know well. Gain a Blues.' },
-            { type: 'gambit', name: 'Wheels', desc: 'You own a sweet ride. Treat it as a Small Vehicle with total Stats of 2. It has no integrated equipment for now. Your Crew Ship has a hangar bay to accommodate it.' },
-            
-            { type: 'trouble', name: 'Best Served Cold', desc: 'They crossed you, and they\'ll regret it.', triggers: ['You remember what it cost you', 'You escalate a situation in an attempt to get revenge', 'You cross the one line you always swore you wouldn\'t'] },
-            { type: 'trouble', name: 'Bloodthirsty', desc: 'The best way to end a fight is to be more willing to commit spectacular violence than your enemies.', triggers: ['You answer one of the questions during play', 'You answer with your brutality'] },
-            { type: 'trouble', name: 'Brick in the Wall', desc: 'You\'re not just a criminal, well-functioning person. No paranoia. Nothing. How did you end up here?', triggers: ['Someone takes advantage of your good nature', 'Someone hurts you when they find you unremarkable', 'Something that a normal outlaw wouldn\'t find remarkable'] },
-            { type: 'trouble', name: 'Close to Your Chest', desc: 'You have come into information that is incredibly dangerous, highly sought after or scandalous. You know something you definitely shouldn\'t know.', triggers: ['You keep your secret, to the detriment of others', 'You selfishly hold your tongue', 'Keeping your secret negatively affects your daily life'] },
-            { type: 'trouble', name: 'Devil in the Bottle', desc: 'You tell your friends you\'re high functioning. You ain\'t.', triggers: ['You do something stupid while drunk that reminds you of that other time', 'You go cold turkey for more than a day or two', 'You wrestle with the consequences of a hangover'] },
-            { type: 'trouble', name: 'A Higher Cause', desc: 'You have a religious creed, and while it may not mesh well with those of the Frontier Galaxy, your ideology may drive the narrative.', triggers: ['Someone rejects your faith', 'Your faith compels you to take some foolish action', 'You bend a core tenet of your faith'] },
-            { type: 'trouble', name: 'In Too Deep', desc: 'You got involved with the wrong people and did things you aren\'t proud of.', triggers: ['You answer one of the questions during play', 'A lawman remembers your face', 'Which point did you realise you\'d gone too far'] },
-            { type: 'trouble', name: 'Lost It All on the River', desc: 'You gotta play the hand that life gives you. You love to gamble, and you never fold.', triggers: ['You go all in and live to regret it', 'You make an outrageous bluff', 'You defy the odds and win big'] },
-            { type: 'trouble', name: 'Lovesick', desc: 'You had a lover, but now they\'re gone. It doesn\'t feel all that good.', triggers: ['Something reminds you of them and it stings a bit', 'Something reminds you of them and makes you miss them so much', 'Something reminds you of them and makes you feel empty'] },
-            { type: 'trouble', name: 'On the Run', desc: 'You crossed someone you shouldn\'t have. Fled like a dog.', triggers: ['You abandon someone to escape', 'You see your pursuers when they are not there', 'You evade a problem instead of fighting it'] },
-            { type: 'trouble', name: 'Orbital Blues', desc: 'Everyone else is fighting the battle to be ruthless. Everyone else is tightening the noose. You just want to not lose, but you still last.', triggers: ['What caused the onset of the blues', 'What do you enjoy before the blues bed each day', 'How do you cope with the blues', 'Who helps you through the blues', 'You see someone enjoying something the blues have spoiled for you'] },
-            { type: 'trouble', name: 'Papa Was a Rolling Stone', desc: 'Perhaps Dad was the highest roller this side of Rancid Vegas, or Ma was the best Bounty Hunter who ever held a .45. Whatever it was, you will always and forever live in their shadow.', triggers: ['Your forebear\'s reputation undermines your achievements', 'Your abilities are doubted against your predecessor\'s', 'Your abilities or achievements are compared to theirs'] },
-            { type: 'trouble', name: 'Party Animal', desc: 'You know how to live. Let no one else tell you anything else.', triggers: ['You enjoy yourself more than you probably should', 'You do a very stupid thing in a very serious situation', 'You cover up your true feelings with debauchery'] },
-            { type: 'trouble', name: 'Reluctant Vagabond', desc: 'You had a nice life somewhere, or at least something comfortable. Something that eats you up inside. You miss it.', triggers: ['You remember what you left behind', 'You see others living comfortable, stable lives', 'You complain about your new life'] },
-            { type: 'trouble', name: 'The Road Not Taken', desc: 'Something has passed you by, and you can\'t stop thinking about it. Something that was stopping you from changing your mind now.', triggers: ['You are reminded of the path you left behind', 'You think of the path you left behind', 'You unsuccessfully attempt to change your chosen path'] },
-            { type: 'trouble', name: 'Struggling Artist', desc: 'You\'re an artist. One day they\'ll recognise you.', triggers: ['You rely on your talent', 'Something reminds you of your failure', 'Someone comments on your talent'] },
-            { type: 'trouble', name: 'Too Big for Your Boots', desc: 'You are the best at something, and you know it. God help anyone who tells you otherwise.', triggers: ['You list your accomplishments', 'You put others down', 'You fail to prove your superiority'] },
-            { type: 'trouble', name: 'Through Your Teeth', desc: 'You\'ve never found an honest benefit you liked — but the truth has a way of coming back.', triggers: ['You accidentally reveal something you shouldn\'t', 'Something reminds you of your cell or cellmates', 'You use a skill you learned while you were inside'] },
-            { type: 'trouble', name: 'Time Behind Bars', desc: 'You spent some time in prison for crimes you may have committed. You are out now, but it\'s still with you.', triggers: ['Where did you serve your sentence', 'What uncommon skill did you learn while inside', 'What friends did you make while inside', 'What enemies did you make while inside', 'How long was it'] },
-            { type: 'trouble', name: 'Yellow-Bellied', desc: 'They called you a coward. Worst is, they aren\'t wrong.', triggers: ['You bottle it up', 'Someone calls you a coward, and they\'re right', 'You ruminate on the worst thing that could happen in this situation'] }
+        const GAMBITS_DATA = [
+            { type:'gambit', name:'A Fighter, Not a Lover', desc:'No one can match you in a fight, the heat is everything. Spend Exertion during Combat instead of rolling a Stat Check. If successful, you do not spend Heart.' },
+            { type:'gambit', name:'Ace Pilot', desc:'You\'ve never met anyone who could match you behind the wheel. When piloting a Vehicle, you can always use Savvy instead of Mobility for Stat Checks. You can also choose one option instead of two when you roll a success.' },
+            { type:'gambit', name:'The Bandit', desc:'Through natural ability or training, you are more with incredible agility when you use Exertion to reroll a die while performing physical feats of dexterity, thievery, or agility. You may reroll up to two dice per Heart spent, instead of one.' },
+            { type:'gambit', name:'Beast', desc:'You are very intimidating. If not in combat, including but not limited to acting with something to prove, you roll with the Upper Hand against those with Against the Odds against the cowardly.' },
+            { type:'gambit', name:'Beauty', desc:'You are attractive by any measure, if not always in the conventional sense. You roll with the Upper Hand on checks to influence the smitten, or Against the Odds against the envious.' },
+            { type:'gambit', name:'Book Learning', desc:'You are an academic or special interest field. This could be anything from theoretical physics or biology to literature or history. You roll with the Upper Hand on all Stat Checks relating to knowledge in your field or specialisation.' },
+            { type:'gambit', name:'The Captain', desc:'You lead your crew through thick and thin, and they\'ll always trust you. Once per Scene, when you order one of your Crew to do something, they roll with the Upper Hand to do it. If they fail, you may reroll with the Upper Hand on a Stat Check.' },
+            { type:'gambit', name:'Desperado', desc:'You can push yourself to the limit when it matters. You can use Exertion to reroll a die in combat. When you use Exertion, you may reroll up to two dice per Heart spent, instead of one.' },
+            { type:'gambit', name:'Devil\'s Right Hand', desc:'A pistol is as much a weapon as it is an extension of your will. You always roll with the Upper Hand when Attacking with pistols, and never roll Against the Odds.' },
+            { type:'gambit', name:'Engineer', desc:'You\'re always creating and designing new technological advancements. Design a new piece of Crew Equipment with the Storyteller. You own it or have it installed on your ship. At the end of each Session, allocate an additional die to a Crew Project.' },
+            { type:'gambit', name:'Fast Hands', desc:'You\'re the fastest gun in the Frontier Galaxy. When your initiative is Surprised, you can still act and add the higher to your Savvy. You may roll 2d3 instead and add the higher to your Savvy on your first Turn.' },
+            { type:'gambit', name:'Friends in Low Places', desc:'You\'re known more than a few shady times. When you return to an old haunt and seek some old friends, roll a Blues Check. If you succeed, in addition to gaining a Blues Check, roll with the Upper Hand on your next check to obtain or coerce something from someone there.' },
+            { type:'gambit', name:'The Gambler', desc:'You are a master of misdirection. It comes as easily as breathing. When you use Exertion to reroll a die while gambling or bluffing, you may reroll up to two dice per Heart spent, instead of one.' },
+            { type:'gambit', name:'Gift of the Gab', desc:'You can compose yourself to spin a social situation. When you use Exertion, you may reroll up to two dice per Heart spent, instead of one. You can utilise your knowledge and abilities lying and constructing truths.' },
+            { type:'gambit', name:'Grease-Monkey', desc:'You can utilise your knowledge and abilities to perform engineering tasks others find impossible. When you use Exertion to complete engineering tasks others find impossible, you may reroll up to two dice per Heart spent, instead of one.' },
+            { type:'gambit', name:'Hail of Blows', desc:'You can pummel your enemies into submission. When making an Attack Against the Odds, you can spend 1 Heart to make a second Attack Against the Odds with some weapon this turn.' },
+            { type:'gambit', name:'Heard It Through the Grapevine', desc:'The buzz is everything and everyone. Once per Session, roll a Savvy Check to discover the Crew\'s current predicament. You roll with the Upper Hand on all Stat Checks to gather information or obtain something advantageous about the situation.' },
+            { type:'gambit', name:'Heart of Gold', desc:'You are known for your honesty and good nature. When you speak, roll with the Upper Hand to persuade people to believe you, or to lead them to believe you, even with your heart.' },
+            { type:'gambit', name:'It\'s All in the Details', desc:'You notice all manner of things others might not. You roll with the Upper Hand on all Observation Checks. Once per Session, the Storyteller tells you what parts you need to fix it and how long it will take.' },
+            { type:'gambit', name:'Just Nuts and Bolts', desc:'You are a mechanical wizard. When you come across a broken piece of technology, the Storyteller tells you what parts you need to fix it and how long it will take.' },
+            { type:'gambit', name:'Light-Fingered', desc:'Through years on one side of the law or the other, you\'ve learnt your way around. You have the Upper Hand on Observation Checks to notice and identify locks, traps and other security measures, as well as Stat Checks to disable them.' },
+            { type:'gambit', name:'Lucky', desc:'Luck smiles down on you. Once per Arc, you can force yourself or any other character to reroll a single Check with either the Upper Hand or Against the Odds and choose either result.' },
+            { type:'gambit', name:'Marksman', desc:'With enough time, you can make one shot count. You can take a turn to line up a shot, examining a target and its movement, then Attack with the Upper Hand using a Ranged Personal or Military weapon. The Storyteller may allow use of Marksman\'s Aim before combat starts.' },
+            { type:'gambit', name:'Martial Art', desc:'You are skilled in unarmed combat. You always come to a fight unarmed. You do not roll Against the Odds when you Attack, and your unarmed attacks reflect a tighter style. To reflect Defensive, Intimidating, or Tactile style, grant your opponent the Upper Hand on Healing Checks.' },
+            { type:'gambit', name:'Sawbones', desc:'You\'re a skilled medical doctor. You always come prepared, having the Upper Hand on all Stat Checks related to medicine. In addition, at the end of each Session you need to recover Heart. Roll Against its Odds if you need to recover Heart for this.' },
+            { type:'gambit', name:'Side Hustle', desc:'You have another job or enterprise bringing an Interstellar income. At the end of each Session when calculating Credits and Debts, you can add the result to either the player\'s Credits or to your Savings. Tell the others what you do to make ends meet.' },
+            { type:'gambit', name:'Technical Expert', desc:'You have the gift of a specialty. You can always use your Grit or Savvy instead of a speciality. You can spend a point of Heart to negotiate a Vehicle. You can always use Checks to operate a Vehicle, and can sometimes do things that are not in a normal job.' },
+            { type:'gambit', name:'The Perfect Lie', desc:'There you will sometimes believe at the risk of a straight lie. Once per Session, you can perfectly convince someone of a lie. They will always believe it to be true for the rest of the Scene or combat.' },
+            { type:'gambit', name:'Thick Pockets', desc:'You always count as connected to where your recent work of Credits comes from. You can add the result to either the other characters\' Credits or to your Savings when calculating Credits and Debts.' },
+            { type:'gambit', name:'Tooled Up', desc:'You have all the tops. Choose two: gain one of your weapons on your ship, gain an additional piece of Crew Equipment, can use of your weapons on board a qualified final, take on an extra weapon, add a weapon to your ship.' },
+            { type:'gambit', name:'True Grit', desc:'You\'ve got real guts. Once per Session, you may draw on your inner resolve to roll a Stat Check or Attack with the Upper Hand using your Grit instead of a normal Stat. Bullets, braces and twists aren\'t enough to slow you down.' },
+            { type:'gambit', name:'Unstoppable', desc:'Bullets, braces and twists aren\'t enough to slow you down. Stacked with only not damage from an Attack, this negates all incoming damage. Once per Arc you may choose to take only not damage from an Attack\'s Brewing damage.' },
+            { type:'gambit', name:'Well-Travelled', desc:'You\'ve seen almost every spaceport in the Frontier Galaxy. Once per Arc when you arrive on a new planet, city or spaceport, you can announce that you have been here before, tell the group about a contact or location you know well. Gain a Blues.' },
+            { type:'gambit', name:'Wheels', desc:'You own a sweet ride. Treat it as a Small Vehicle with total Stats of 2. It has no integrated equipment for now. Your Crew Ship has a hangar bay to accommodate it.' },
+
+            { type:'trouble', name:'Best Served Cold', desc:'They crossed you, and they\'ll regret it.', triggers: ['You remember what it cost you', 'You escalate a situation in an attempt to get revenge', 'You cross the one line you always swore you wouldn\'t'] },
+            { type:'trouble', name:'Bloodthirsty', desc:'The best way to end a fight is to be more willing to commit spectacular violence than your enemies.', triggers: ['You answer one of the questions during play', 'You answer with your brutality'] },
+            { type:'trouble', name:'Brick in the Wall', desc:'You\'re not just a criminal, well-functioning person. No paranoia. Nothing. How did you end up here?', triggers: ['Someone takes advantage of your good nature', 'Someone hurts you when they find you unremarkable', 'Something that a normal outlaw wouldn\'t find remarkable'] },
+            { type:'trouble', name:'Close to Your Chest', desc:'You have come into information that is incredibly dangerous, highly sought after or scandalous. You know something you definitely shouldn\'t know.', triggers: ['You keep your secret, to the detriment of others', 'You selfishly hold your tongue', 'Keeping your secret negatively affects your daily life'] },
+            { type:'trouble', name:'Devil in the Bottle', desc:'You tell your friends you\'re high functioning. You ain\'t.', triggers: ['You do something stupid while drunk that reminds you of that other time', 'You go cold turkey for more than a day or two', 'You wrestle with the consequences of a hangover'] },
+            { type:'trouble', name:'A Higher Cause', desc:'You have a religious creed, and while it may not mesh well with those of the Frontier Galaxy, your ideology may drive the narrative.', triggers: ['Someone rejects your faith', 'Your faith compels you to take some foolish action', 'You bend a core tenet of your faith'] },
+            { type:'trouble', name:'In Too Deep', desc:'You got involved with the wrong people and did things you aren\'t proud of.', triggers: ['You answer one of the questions during play', 'A lawman remembers your face', 'Which point did you realise you\'d gone too far'] },
+            { type:'trouble', name:'Lost It All on the River', desc:'You gotta play the hand that life gives you. You love to gamble, and you never fold.', triggers: ['You go all in and live to regret it', 'You make an outrageous bluff', 'You defy the odds and win big'] },
+            { type:'trouble', name:'Lovesick', desc:'You had a lover, but now they\'re gone. It doesn\'t feel all that good.', triggers: ['Something reminds you of them and it stings a bit', 'Something reminds you of them and makes you miss them so much', 'Something reminds you of them and makes you feel empty'] },
+            { type:'trouble', name:'On the Run', desc:'You crossed someone you shouldn\'t have. Fled like a dog.', triggers: ['You abandon someone to escape', 'You see your pursuers when they are not there', 'You evade a problem instead of fighting it'] },
+            { type:'trouble', name:'Orbital Blues', desc:'Everyone else is fighting the battle to be ruthless. Everyone else is tightening the noose. You just want to not lose, but you still last.', triggers: ['What caused the onset of the blues', 'What do you enjoy before the blues bed each day', 'How do you cope with the blues', 'Who helps you through the blues', 'You see someone enjoying something the blues have spoiled for you'] },
+            { type:'trouble', name:'Papa Was a Rolling Stone', desc:'Perhaps Dad was the highest roller this side of Rancid Vegas, or Ma was the best Bounty Hunter who ever held a .45. Whatever it was, you will always and forever live in their shadow.', triggers: ['Your forebear\'s reputation undermines your achievements', 'Your abilities are doubted against your predecessor\'s', 'Your abilities or achievements are compared to theirs'] },
+            { type:'trouble', name:'Party Animal', desc:'You know how to live. Let no one else tell you anything else.', triggers: ['You enjoy yourself more than you probably should', 'You do a very stupid thing in a very serious situation', 'You cover up your true feelings with debauchery'] },
+            { type:'trouble', name:'Reluctant Vagabond', desc:'You had a nice life somewhere, or at least something comfortable. Something that eats you up inside. You miss it.', triggers: ['You remember what you left behind', 'You see others living comfortable, stable lives', 'You complain about your new life'] },
+            { type:'trouble', name:'The Road Not Taken', desc:'Something has passed you by, and you can\'t stop thinking about it. Something that was stopping you from changing your mind now.', triggers: ['You are reminded of the path you left behind', 'You think of the path you left behind', 'You unsuccessfully attempt to change your chosen path'] },
+            { type:'trouble', name:'Struggling Artist', desc:'You\'re an artist. One day they\'ll recognise you.', triggers: ['You rely on your talent', 'Something reminds you of your failure', 'Someone comments on your talent'] },
+            { type:'trouble', name:'Too Big for Your Boots', desc:'You are the best at something, and you know it. God help anyone who tells you otherwise.', triggers: ['You list your accomplishments', 'You put others down', 'You fail to prove your superiority'] },
+            { type:'trouble', name:'Through Your Teeth', desc:'You\'ve never found an honest benefit you liked — but the truth has a way of coming back.', triggers: ['You accidentally reveal something you shouldn\'t', 'Something reminds you of your cell or cellmates', 'You use a skill you learned while you were inside'] },
+            { type:'trouble', name:'Time Behind Bars', desc:'You spent some time in prison for crimes you may have committed. You are out now, but it\'s still with you.', triggers: ['Where did you serve your sentence', 'What uncommon skill did you learn while inside', 'What friends did you make while inside', 'What enemies did you make while inside', 'How long was it'] },
+            { type:'trouble', name:'Yellow-Bellied', desc:'They called you a coward. Worst is, they aren\'t wrong.', triggers: ['You bottle it up', 'Someone calls you a coward, and they\'re right', 'You ruminate on the worst thing that could happen in this situation'] },
         ];
 
-        let gtCurrentFilter = 'all';
+        let gambitsTab = 'all';
 
-        function filterGT(type) {
-            gtCurrentFilter = type;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-filter') === type);
+        function setGambitsTab(t) {
+            gambitsTab = t;
+            document.querySelectorAll('.gambits-tab').forEach(el => {
+                el.classList.remove('active');
             });
-            renderGT();
+            event.target.classList.add('active');
+            renderGambits();
         }
 
-        function renderGT() {
-            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
-            let filtered = GAMBITS_TROUBLES_DATA;
+        function renderGambits() {
+            const q = document.getElementById('gambits-search').value.toLowerCase();
+            const filtered = GAMBITS_DATA.filter(d => {
+                if (gambitsTab !== 'all' && d.type !== gambitsTab) return false;
+                if (!q) return true;
+                return d.name.toLowerCase().includes(q) || 
+                       d.desc.toLowerCase().includes(q) || 
+                       (d.triggers || []).join(' ').toLowerCase().includes(q);
+            });
 
-            if (gtCurrentFilter !== 'all') {
-                filtered = filtered.filter(item => item.type === gtCurrentFilter);
+            document.getElementById('gambits-count').textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''}`;
+            
+            const grid = document.getElementById('gambits-grid');
+            if (!filtered.length) { 
+                grid.innerHTML = '<div class="gambits-empty">No matches found.</div>'; 
+                return; 
             }
 
-            if (searchTerm) {
-                filtered = filtered.filter(item => 
-                    item.name.toLowerCase().includes(searchTerm) || 
-                    item.desc.toLowerCase().includes(searchTerm) ||
-                    (item.triggers && item.triggers.some(t => t.toLowerCase().includes(searchTerm)))
-                );
-            }
-
-            document.getElementById('countGT').textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''}`;
-
-            const grid = document.getElementById('gtGrid');
-            if (filtered.length === 0) {
-                grid.innerHTML = '<div class="gt-no-results">No matches found.</div>';
-                return;
-            }
-
-            grid.innerHTML = filtered.map(item => `
-                <div class="gt-card">
-                    <div class="gt-badge gt-badge-${item.type}">${item.type.charAt(0).toUpperCase() + item.type.slice(1)}</div>
-                    <div class="gt-card-name">${item.name}</div>
-                    <div class="gt-card-desc">${item.desc}</div>
-                    ${item.triggers ? `
-                        <div class="gt-triggers">
-                            <div class="gt-triggers-label">Gain 1 Blues when:</div>
-                            <div>${item.triggers.map(t => `• ${t}`).join('<br>')}</div>
-                        </div>
-                    ` : ''}
+            grid.innerHTML = filtered.map(d => `
+                <div class="gambit-card">
+                    <div class="gambit-tag ${d.type}">${d.type}</div>
+                    <div class="gambit-name">${d.name}</div>
+                    <div class="gambit-desc">${d.desc}</div>
+                    ${d.triggers ? `<div class="gambit-triggers"><strong>Gain 1 Blues when:</strong> ${d.triggers.join(' · ')}</div>` : ''}
                 </div>
             `).join('');
         }
-
-        // Initialize Gambits & Troubles rendering
-        renderGT();
-        document.getElementById('searchBox').addEventListener('input', renderGT);
 
         function showSection(sectionId) {
             // Hide all content sections
@@ -1134,11 +1145,12 @@
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.add('active');
-                // Reinitialize Gambits & Troubles if showing reference
-                if (sectionId === 'reference') {
-                    renderGT();
-                }
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Initialize gambits when shown
+            if (sectionId === 'gambits') {
+                renderGambits();
             }
         }
 
@@ -1149,6 +1161,6 @@
                 checkbox.checked = !checkbox.checked;
             });
         });
-
+    </script>
 </body>
 </html>
